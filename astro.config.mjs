@@ -16,7 +16,7 @@ export default defineConfig({
     starlight({
       title: 'Apuntes Programación Java',
       description: 'Curso completo de Programación en Java para DAM/DAW — RD 405/2023, módulo 0485.',
-      favicon: '/favicon.svg',
+      favicon: '/favicon.png',
       defaultLocale: 'es',
       locales: {
         root: { label: 'Español', lang: 'es' },
