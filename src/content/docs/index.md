@@ -20,10 +20,10 @@ template: splash
   <a class="unit-link" href="/01-introduccion-algoritmica-pseudocodigo/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🔤 U02 · Primeros pasos en Java</strong>
   <span>Sintaxis, tipos de datos y operadores.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="/02-sintaxis-tipos-datos/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">

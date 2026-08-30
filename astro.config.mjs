@@ -40,6 +40,20 @@ export default defineConfig({
             { label: '🔥 Extras', link: '/boletines/boletin-01-extras/' },
           ],
         },
+        {
+          label: '🔤 U02 · Sintaxis y tipos de datos',
+          link: '/02-sintaxis-tipos-datos/',
+        },
+        {
+          label: '📝 Boletines U02',
+          items: [
+            { label: '🟢 Inicial', link: '/boletines/boletin-02-inicial/' },
+            { label: '✅ Inicial resuelto', link: '/boletines/boletin-02-inicial-resuelto/' },
+            { label: '⭐ Intermedio', link: '/boletines/boletin-02-intermedio/' },
+            { label: '💪 Intermedio resuelto', link: '/boletines/boletin-02-intermedio-resuelto/' },
+            { label: '🔥 Extras', link: '/boletines/boletin-02-extras/' },
+          ],
+        },
       ],
     }),
   ],
