@@ -1,0 +1,109 @@
+/* Apuntes Programación Java — tema "verde calma" */
+
+:root {
+  --verde-calma: #2d8a4e;
+  --verde-calma-suave: #3fa863;
+  --verde-calma-oscuro: #1f6338;
+  --degradado-hero: linear-gradient(135deg, var(--verde-calma) 0%, var(--verde-calma-suave) 100%);
+
+  --sl-color-accent-low: #d3f0dd;
+  --sl-color-accent: var(--verde-calma);
+  --sl-color-accent-high: var(--verde-calma-oscuro);
+  --sl-color-text-accent: var(--verde-calma);
+
+  --sl-font: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Nota: para Geist Sans real, instala el paquete `geist` de Vercel y
+   añade sus @font-face aquí, o carga sus ficheros woff2 en public/fonts/.
+   Mientras tanto se usa una pila de sustitutos del sistema. */
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #16301f;
+  --sl-color-accent: var(--verde-calma-suave);
+  --sl-color-accent-high: #b7e6c6;
+}
+
+/* ---------- Hero de la portada ---------- */
+.hero {
+  background: var(--degradado-hero);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+/* ---------- Cards de unidades en la landing ---------- */
+.unit-card {
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  background: var(--sl-color-bg-nav);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.unit-card.disabled {
+  opacity: 0.55;
+}
+
+.unit-link {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: var(--degradado-hero);
+  color: #fff !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  font-size: 0.85rem;
+  width: fit-content;
+}
+
+.unit-link:hover {
+  filter: brightness(1.08);
+}
+
+/* ---------- Barra de descargas ---------- */
+.download-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--sl-color-bg-nav);
+  border: 1px solid var(--sl-color-hairline);
+}
+
+/* ---------- Enlaces a boletines (dentro de cada unidad) ---------- */
+.ejercicio-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+.elink {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--sl-color-accent);
+  color: var(--sl-color-accent-high) !important;
+  text-decoration: none !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--sl-color-accent-low);
+}
+
+.elink:hover {
+  background: var(--sl-color-accent);
+  color: #fff !important;
+}
+
+/* ---------- Botón de idioma (reservado; el curso es monolingüe por ahora) ---------- */
+.lang-switch {
+  background: var(--verde-calma);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
