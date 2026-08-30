@@ -1,5 +1,23 @@
 /* Apuntes Programación Java — tema "verde calma" */
 
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2-variations'),
+       url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/Geist-Italic-Variable.woff2') format('woff2-variations'),
+       url('/fonts/Geist-Italic-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --verde-calma: #2d8a4e;
   --verde-calma-suave: #3fa863;
@@ -13,10 +31,6 @@
 
   --sl-font: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-
-/* Nota: para Geist Sans real, instala el paquete `geist` de Vercel y
-   añade sus @font-face aquí, o carga sus ficheros woff2 en public/fonts/.
-   Mientras tanto se usa una pila de sustitutos del sistema. */
 
 :root[data-theme='dark'] {
   --sl-color-accent-low: #16301f;

@@ -7,12 +7,26 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "pdf:es": "echo \"Genera el PDF imprimiendo cada pagina con Ctrl+P desde npm run preview (ver README)\"",
-    "epub": "echo \"Pendiente de configurar Pandoc (ver README)\""
+    "pdf:local:es": "powershell -ExecutionPolicy Bypass -File scripts/generate-pdf.ps1 -Target local",
+    "pdf:es": "powershell -ExecutionPolicy Bypass -File scripts/generate-pdf.ps1 -Target prod",
+    "epub": "powershell -ExecutionPolicy Bypass -File scripts/generate-epub.ps1"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.0",
     "astro": "^5.1.0",
+    "geist": "^1.7.2",
     "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "starlight-to-pdf": "^1.4.0"
+  },
+  "overrides": {
+    "puppeteer": "^25.9.0"
+  },
+  "allowScripts": {
+    "puppeteer@23.11.1": true,
+    "puppeteer@25.9.0": true,
+    "sharp@0.34.5": true,
+    "esbuild@0.27.7": true
   }
 }
