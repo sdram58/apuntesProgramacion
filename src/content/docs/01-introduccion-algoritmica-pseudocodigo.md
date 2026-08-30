@@ -130,7 +130,7 @@ El **pseudocódigo** es un lenguaje intermedio entre el español y Java: tiene l
 | `SEGUN var HACER CASO ... FINSEGUN` | Selección múltiple según el valor de una variable. |
 | `MIENTRAS cond HACER ... FINMIENTRAS` | Bucle con condición al principio (puede no ejecutarse nunca). |
 | `REPETIR ... HASTA QUE cond` | Bucle con condición al final (se ejecuta al menos una vez). |
-| `PARA var ← ini HASTA fin HACER ...` | Bucle contado. |
+| `PARA var ← ini HASTA fin HACER ... FINPARA` | Bucle contado. |
 
 **Operadores:**
 
