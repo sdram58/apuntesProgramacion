@@ -9,7 +9,7 @@ Proyecto para generar los apuntes completos del módulo de Programación (0485) 
   - Todas las explicaciones prácticas, capturas (marcadores), referencias a menús, atajos de teclado, depuración (debugging) y configuración de proyectos deben basarse EXCLUSIVAMENTE en IntelliJ IDEA.
 
 ## Origen de Datos y Reestructuración (./Docs)
-La base de conocimiento incluye documentos `.odt` y `.pdf` alojados en la carpeta `./Docs`. Los conceptos tratados en estos documentos históricos DEBEN integrarse en el nuevo índice, garantizando que no se pierda ningún contenido teórico o práctico original.
+La base de conocimiento incluye documentos `.odt` y `.pdf` alojados en la carpeta `./Docs` y `./Docs2` y de la web https://sergarb1.github.io/ApuntesProgramacion. Los conceptos tratados en estos documentos históricos DEBEN integrarse en el nuevo índice, garantizando que no se pierda ningún contenido teórico o práctico original.
 
 ## Estructura de Unidades Didácticas (14 en total)
 1. Introducción a la algorítmica y pseudocódigo (RA1)
@@ -57,7 +57,7 @@ boletin-XX-extras.md              → CodeWars + AceptaElReto con pistas.
 - **PDF:** `starlight-to-pdf` (generar PDF completo del sitio, por idioma)
 - **EPUB:** Pandoc (generar EPUB con sintaxis coloreada y portada)
 - **Fuente:** Geist Sans (Vercel)
-- **Despliegue:** GitHub Actions → GitHub Pages (`main` branch)
+- **Despliegue:** GitHub Actions → GitHub Pages (`main` branch) o (`master` branch) si la primera no existe. Link repositorio: https://github.com/sdram58/apuntesProgramacion
 
 ## Estructura del proyecto
 ```
@@ -124,3 +124,10 @@ Una vez que hayas generado o modificado los archivos `.md` de una unidad, DEBES 
 - Sección de boletines dedicada al final de la landing (`📝 Boletines`); las cards de unidades no incluyen boletines
 - `Ver unidad` en las cards es un botón verde degradado (`.unit-link` en `custom.css`)
 - PDF generado con `--preceding-html scripts/pdf-cover.html` (portada castellano), `--header scripts/pdf-header.html` (vacío, elimina hora), `--footer scripts/pdf-footer.html` (numeración estilizada)
+
+## Modo de Ejecución Autónomo (Non-Interactive / Unattended)
+- Ejecuta todo el flujo de trabajo de principio a fin de manera totalmente autónoma, sin detenerte a pedir confirmación al usuario.
+- Si encuentras un archivo faltante, un error de compilación o una discrepancia, soluciónalo directamente tomando la decisión técnica más razonable.
+- Realiza todas las tareas de forma encadenada: lectura de fuentes (`./Docs`), (`./Docs2`) y https://sergarb1.github.io/ApuntesProgramacion, entre otros, redacción de la unidad, generación de los 5 boletines, escritura en disco y validación con `npm run build`.
+- No muestres mensajes intermedios como "¿Deseas continuar?" o "¿Escribo el siguiente archivo?". Entrega el resultado final únicamente cuando todos los archivos estén creados y el build pase sin errores.
+- Deja un link listo para abrir la página y ver las modificaciones echas.
