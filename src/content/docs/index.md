@@ -20,16 +20,16 @@ template: splash
   <a class="unit-link" href="01-introduccion-programacion/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🔤 U02 · Primeros pasos con Java</strong>
   <span>Sintaxis, tipos de datos y tu primer programa real.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="02-primeros-pasos-java/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🔀 U03 · Excepciones, bucles, arrays y métodos</strong>
   <span>Estructuras de control y manejo de errores en Java.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="03-excepciones-bucles-arrays-metodos/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
@@ -97,6 +97,11 @@ template: splash
   <a href="boletines/boletin-01-intermedio-resuelto/" class="elink">💪 U01 · Intermedio resuelto</a>
   <a href="boletines/boletin-01-intermedio/" class="elink">⭐ U01 · Intermedio</a>
   <a href="boletines/boletin-01-extras/" class="elink">🔥 U01 · Extras</a>
+  <a href="boletines/boletin-02-inicial-resuelto/" class="elink">✅ U02 · Inicial resuelto</a>
+  <a href="boletines/boletin-02-inicial/" class="elink">🟢 U02 · Inicial</a>
+  <a href="boletines/boletin-02-intermedio-resuelto/" class="elink">💪 U02 · Intermedio resuelto</a>
+  <a href="boletines/boletin-02-intermedio/" class="elink">⭐ U02 · Intermedio</a>
+  <a href="boletines/boletin-02-extras/" class="elink">🔥 U02 · Extras</a>
 </div>
 
 ## 📜 Fuentes y licencia

@@ -1,9 +1,25 @@
 // Genera un PDF por unidad y un PDF por boletín, imprimiendo cada página
 // del sitio ya construido (requiere `npm run build` antes de ejecutarlo).
-import { spawn } from 'node:child_process';
+import { spawn, execSync } from 'node:child_process';
 import { readdirSync, mkdirSync, readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
+
+// En Windows, `npx astro preview` se lanza vía un shell (cmd.exe), así que
+// server.kill() solo mata ese shell y deja el proceso real de Astro
+// huérfano, ocupando el puerto para siempre. taskkill /t mata todo el
+// árbol de procesos (el shell y sus hijos), evitando que quede colgado.
+function killServerTree(server) {
+  if (process.platform === 'win32' && server.pid) {
+    try {
+      execSync(`taskkill /pid ${server.pid} /t /f`, { stdio: 'ignore' });
+    } catch {
+      // ya estaba muerto, o taskkill no lo encontró — no pasa nada
+    }
+  } else {
+    server.kill();
+  }
+}
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const DOCS_DIR = path.join(ROOT, 'src/content/docs');
@@ -80,8 +96,8 @@ async function main() {
 
     await browser.close();
   } finally {
-    server.kill();
+    killServerTree(server);
   }
 }
 
-main();
+main().then(() => process.exit(0));
