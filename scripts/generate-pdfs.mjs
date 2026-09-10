@@ -9,7 +9,8 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const DOCS_DIR = path.join(ROOT, 'src/content/docs');
 const BOLETINES_DIR = path.join(DOCS_DIR, 'boletines');
 const PORT = 4322;
-const BASE_URL = `http://localhost:${PORT}`;
+const SITE_BASE = '/apuntesProgramacion';
+const BASE_URL = `http://localhost:${PORT}${SITE_BASE}`;
 const headerTemplate = readFileSync(path.join(ROOT, 'scripts/pdf-header.html'), 'utf8');
 const footerTemplate = readFileSync(path.join(ROOT, 'scripts/pdf-footer.html'), 'utf8');
 

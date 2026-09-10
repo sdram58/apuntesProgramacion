@@ -498,7 +498,7 @@ No todos los errores son iguales, y conviene distinguirlos porque cada uno se de
 | RA1. Reconoce la estructura de un programa informático, identificando y relacionando los elementos propios del lenguaje de programación utilizado. | a) estructura de un programa · c) entornos integrados de desarrollo · i) comentarios en el código |
 
 <div class="ejercicio-links">
-  <a class="elink" href="/boletines/boletin-01-inicial/">🟢 Boletín inicial</a>
-  <a class="elink" href="/boletines/boletin-01-intermedio/">⭐ Boletín intermedio</a>
-  <a class="elink" href="/boletines/boletin-01-extras/">🔥 Extras</a>
+  <a class="elink" href="../boletines/boletin-01-inicial/">🟢 Boletín inicial</a>
+  <a class="elink" href="../boletines/boletin-01-intermedio/">⭐ Boletín intermedio</a>
+  <a class="elink" href="../boletines/boletin-01-extras/">🔥 Extras</a>
 </div>

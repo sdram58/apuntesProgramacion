@@ -2,13 +2,15 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// TODO: cuando despliegues en GitHub Pages como proyecto (no como sitio de
-// usuario), necesitarás volver a añadir `base: '/NOMBRE-DEL-REPO'` aquí Y
-// reescribir todos los enlaces internos hardcodeados en los .md (los que
-// empiezan por "/", como en index.md y en las unidades) para que usen el
-// helper de base de Astro — si no, se rompen en producción igual que se
-// rompían en local hasta que se quitó `base` de aquí.
+// GitHub Pages sirve este repo como sitio de PROYECTO, en
+// https://sdram58.github.io/apuntesProgramacion/ (no en la raíz del
+// dominio), así que Astro necesita saber ese prefijo con `base`. Todos los
+// enlaces/imágenes de Starlight (sidebar, favicon, customCss) lo tienen en
+// cuenta automáticamente. Los enlaces e imágenes escritos a mano dentro de
+// los `.md` (en index.md y en las unidades) usan rutas RELATIVAS (sin `/`
+// inicial) para funcionar igual en local y en producción sin tocar nada.
 const SITE = 'https://sdram58.github.io';
+const BASE = '/apuntesProgramacion';
 
 function boletinesSidebar(unidad) {
   const n = String(unidad).padStart(2, '0');
@@ -26,6 +28,7 @@ function boletinesSidebar(unidad) {
 
 export default defineConfig({
   site: SITE,
+  base: BASE,
   integrations: [
     starlight({
       title: 'Apuntes Programación Java',

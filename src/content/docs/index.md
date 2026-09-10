@@ -5,7 +5,7 @@ template: splash
 ---
 
 <div class="hero" style="display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center;color:#fff;">
-  <img src="/portada.svg" alt="Apuntes Programación Java" style="max-width:320px;width:100%;height:auto;" />
+  <img src="portada.svg" alt="Apuntes Programación Java" style="max-width:320px;width:100%;height:auto;" />
   <h1 style="margin:0;color:#fff;">Apuntes Programación Java</h1>
   <p style="margin:0;max-width:60ch;">Curso completo de Programación en Java para 1º DAM — módulo 0485. Sin experiencia previa necesaria.</p>
 </div>
@@ -17,7 +17,7 @@ template: splash
 <div class="unit-card">
   <strong>🚀 U01 · Introducción a la programación</strong>
   <span>Qué es un programa, cómo se clasifican los lenguajes y cómo se piensa en pseudocódigo.</span>
-  <a class="unit-link" href="/01-introduccion-programacion/">Ver unidad</a>
+  <a class="unit-link" href="01-introduccion-programacion/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
@@ -92,11 +92,11 @@ template: splash
 ## 📝 Boletines
 
 <div class="ejercicio-links">
-  <a href="/boletines/boletin-01-inicial-resuelto/" class="elink">✅ U01 · Inicial resuelto</a>
-  <a href="/boletines/boletin-01-inicial/" class="elink">🟢 U01 · Inicial</a>
-  <a href="/boletines/boletin-01-intermedio-resuelto/" class="elink">💪 U01 · Intermedio resuelto</a>
-  <a href="/boletines/boletin-01-intermedio/" class="elink">⭐ U01 · Intermedio</a>
-  <a href="/boletines/boletin-01-extras/" class="elink">🔥 U01 · Extras</a>
+  <a href="boletines/boletin-01-inicial-resuelto/" class="elink">✅ U01 · Inicial resuelto</a>
+  <a href="boletines/boletin-01-inicial/" class="elink">🟢 U01 · Inicial</a>
+  <a href="boletines/boletin-01-intermedio-resuelto/" class="elink">💪 U01 · Intermedio resuelto</a>
+  <a href="boletines/boletin-01-intermedio/" class="elink">⭐ U01 · Intermedio</a>
+  <a href="boletines/boletin-01-extras/" class="elink">🔥 U01 · Extras</a>
 </div>
 
 ## 📜 Fuentes y licencia
