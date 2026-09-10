@@ -1,159 +1,121 @@
 ---
-title: Boletín U01 — Inicial (Resuelto)
-description: Los mismos ejercicios que el boletín inicial, con soluciones
+title: Boletín U01 — Inicial (resuelto)
+description: Soluciones del boletín inicial sobre algoritmos y pseudocódigo
 ---
 
-# 📝 Boletín U01 — Inicial (Resuelto)
+# ✅ Boletín U01 — Inicial (resuelto)
 
-> Las soluciones están ocultas en cada ejercicio. No hagas trampa: primero inténtalo de verdad.
+1. **El mayor de dos números**
+   <details>
+   <summary>💡 Solución</summary>
 
----
+   ```
+   Algoritmo Mayor
+       Leer a, b
+       Si (a > b) Entonces
+           Escribir "El mayor es ", a
+       Sino
+           Escribir "El mayor es ", b
+       FinSi
+   FinAlgoritmo
+   ```
+   </details>
 
-## Ejercicio 1: ordena la receta
+2. **Traza de A/B**
+   <details>
+   <summary>💡 Solución</summary>
 
-<details>
-<summary>🔄 Solución</summary>
+   | Paso | A | B |
+   |---|---|---|
+   | Inicio | 5 | 3 |
+   | A = A + B | 8 | 3 |
+   | B = A - B | 8 | 5 |
+   | A = A - B | 3 | 5 |
 
-1. Poner la cafetera en el fuego.
-2. Esperar a que salga el café.
-3. Calentar la leche.
-4. Servir el café en la taza.
-5. Añadir la leche caliente.
+   Curiosidad: es un truco clásico para **intercambiar dos variables sin usar una tercera**. Al final A vale lo que valía B, y B vale lo que valía A.
+   </details>
 
-Fíjate en la dependencia lógica: no puedes servir el café antes de que salga, ni añadir la leche antes de calentarla.
+3. **Mayoría de edad**
+   <details>
+   <summary>💡 Solución</summary>
 
-</details>
+   ```
+   Algoritmo MayoriaEdad
+       Leer edad
+       Si (edad >= 18) Entonces
+           Escribir "Es mayor de edad"
+       Sino
+           Escribir "Es menor de edad"
+       FinSi
+   FinAlgoritmo
+   ```
+   </details>
 
----
+4. **Del 1 al 10 con Mientras**
+   <details>
+   <summary>💡 Solución</summary>
 
-## Ejercicio 2: auditoría de las cinco propiedades
+   ```
+   Algoritmo Contar
+       i = 1
+       Mientras (i <= 10) Hacer
+           Escribir i
+           i = i + 1
+       FinMientras
+   FinAlgoritmo
+   ```
+   </details>
 
-<details>
-<summary>🔄 Solución</summary>
+5. **Del 1 al 10 con Para**
+   <details>
+   <summary>💡 Solución</summary>
 
-a) **No cumple** — falla **finitud**. "Sin detenerte jamás" es, literalmente, un bucle infinito.
+   ```
+   Algoritmo ContarPara
+       Para i = 1 Hasta 10 Hacer
+           Escribir i
+       FinPara
+   FinAlgoritmo
+   ```
 
-b) **No cumple tal cual** — falla **precisión/eficacia**. La división entre cero no está definida; el algoritmo debería incluir una comprobación:
-```
-SI y <> 0 ENTONCES
-  ESCRIBIR x / y
-SINO
-  ESCRIBIR "Error: división por cero"
-FINSI
-```
+   Fíjate: cuando sabes de antemano cuántas repeticiones necesitas (aquí, exactamente 10), `Para` es más directo que `Mientras` — no hace falta que tú mismo lleves la cuenta del contador.
+   </details>
 
-c) **No cumple** — falla **precisión**. "Cantidad adecuada" y "a tu gusto" son valoraciones subjetivas: dos personas obtendrían resultados distintos.
+6. **Subalgoritmo esPar**
+   <details>
+   <summary>💡 Solución</summary>
 
-d) **Cumple las cinco**: es finito, preciso (los rangos numéricos están bien delimitados), tiene entrada (la temperatura), salida (el mensaje) y es eficaz.
+   ```
+   SubAlgoritmo Verdadero <- esPar(numero)
+       esPar = (numero % 2 == 0)
+   FinSubAlgoritmo
 
-</details>
+   Algoritmo Principal
+       Para i = 1 Hasta 5 Hacer
+           Si (esPar(i)) Entonces
+               Escribir i, " es par"
+           Sino
+               Escribir i, " es impar"
+           FinSi
+       FinPara
+   FinAlgoritmo
+   ```
+   </details>
 
----
+7. **Clasificación de lenguajes**
+   <details>
+   <summary>💡 Solución</summary>
 
-## Ejercicio 3: traza con condición compuesta
+   | Lenguaje | Nivel | Ejecución |
+   |---|---|---|
+   | Ensamblador | Bajo nivel | Se traduce con un ensamblador (similar a compilación 1:1) |
+   | Python | Alto nivel | Se interpreta |
+   | Java | Alto nivel | Compila a bytecode + la JVM lo interpreta/JIT-compila |
+   </details>
 
-<details>
-<summary>🔄 Solución</summary>
+8. **Orden del ciclo de vida**
+   <details>
+   <summary>💡 Solución</summary>
 
-La condición usa `Y`: para entrar en la rama `ENTONCES` hace falta que **las dos** subcondiciones sean verdaderas.
-
-**Caso 1** (`rentaFamiliar = 14500`, `notaMedia = 8.2`): `14500 < 18000` es verdadero, `8.2 >= 7.0` es verdadero → la conjunción es verdadera.
-```
-Beca concedida
-Expediente evaluado
-```
-
-**Caso 2** (`rentaFamiliar = 12000`, `notaMedia = 6.5`): `12000 < 18000` es verdadero, pero `6.5 >= 7.0` es falso → la conjunción es falsa.
-```
-Solicitud denegada
-Expediente evaluado
-```
-
-En los dos casos el último `ESCRIBIR` se ejecuta siempre: está después del `FINSI`, ya fuera del bloque de selección.
-
-</details>
-
----
-
-## Ejercicio 4: identifica el bloque
-
-<details>
-<summary>🔄 Solución</summary>
-
-a) **Secuencia** — los tres pasos se ejecutan uno detrás de otro, sin condiciones ni repeticiones.
-b) **Iteración** — el bloque `MIENTRAS...FINMIENTRAS` repite mientras se cumpla `intentos < 3`.
-c) **Selección** — el `SI...SINO` decide qué mensaje mostrar según `stock > 0`.
-
-</details>
-
----
-
-## Ejercicio 5: empareja conceptos
-
-<details>
-<summary>🔄 Solución</summary>
-
-**1→C, 2→D, 3→E, 4→A, 5→B**
-
-- Bytecode: código intermedio de Java (`.class`), independiente de la plataforma.
-- Pseudocódigo: notación sin sintaxis de un lenguaje concreto.
-- JVM: ejecuta el bytecode simulando un ordenador.
-- Diagrama de flujo: representación gráfica con símbolos y flechas.
-- IDE: editor + compilador + depurador en una sola herramienta (en este curso, IntelliJ).
-
-</details>
-
----
-
-## Ejercicio 6: elige el símbolo
-
-<details>
-<summary>🔄 Solución</summary>
-
-a) **Paralelogramo** (▱) — entrada de datos.
-b) **Rombo** (◇) — decisión.
-c) **Rectángulo** (▭) — proceso o cálculo.
-d) **Óvalo** (⬭) — inicio del algoritmo.
-e) **Conector** (◯) — enlaza ramas del diagrama.
-
-</details>
-
----
-
-## Ejercicio 7: completa el pseudocódigo
-
-<details>
-<summary>🔄 Solución</summary>
-
-```
-INICIO
-  LEER numero
-  SI numero >= 0 ENTONCES
-    ESCRIBIR "Positivo"
-  SINO
-    ESCRIBIR "Negativo"
-  FINSI
-FIN
-```
-
-La rama `SINO` necesita su propio `ESCRIBIR` para cubrir el caso en que la condición no se cumple — si no, el algoritmo se queda mudo cuando el número es negativo.
-
-</details>
-
----
-
-## Ejercicio 8: caza la ambigüedad
-
-<details>
-<summary>🔄 Solución</summary>
-
-Respuestas orientativas (cualquier versión igual de precisa es válida):
-
-a) "Añade 5 gramos de sal."
-b) "Espera 10 minutos."
-c) "Si el número es mayor que 1000, muestra el mensaje 'Número grande'."
-d) "Repite el proceso 3 veces."
-
-La clave en los cuatro casos es sustituir una valoración subjetiva ("al gusto", "un rato", "grande", "varias veces") por un valor o condición exacta y comprobable.
-
-</details>
+   Análisis → Diseño → Implementación → Pruebas → Despliegue y mantenimiento.
+   </details>

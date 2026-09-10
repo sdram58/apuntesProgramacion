@@ -111,13 +111,3 @@
   background: var(--sl-color-accent);
   color: #fff !important;
 }
-
-/* ---------- Botón de idioma (reservado; el curso es monolingüe por ahora) ---------- */
-.lang-switch {
-  background: var(--verde-calma);
-  color: #fff;
-  border-radius: 999px;
-  padding: 0.3rem 0.8rem;
-  font-weight: 600;
-  font-size: 0.8rem;
-}

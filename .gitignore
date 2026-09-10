@@ -3,3 +3,11 @@ dist/
 .astro/
 .DS_Store
 *.log
+
+# Fuentes documentales pesadas (no se publican, solo se usan como referencia)
+/Docs/*.odt
+/Docs/*.pdf
+/Docs2/
+
+# Config local de Claude Code (no forma parte del proyecto publicado)
+/.claude/

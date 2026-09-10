@@ -3,145 +3,58 @@ title: Boletín U01 — Extras
 description: Retos de pensamiento algorítmico puro, sin necesitar Java todavía
 ---
 
-# 📝 Boletín U01 — Extras
+# 🔥 Boletín U01 — Extras
 
-> ⭐ Los retos de CodeWars y AceptaElReto necesitan tipos, `Scanner` y estructuras de control en Java real, así que cogen ritmo de verdad a partir de la U03. Mientras tanto, estos cuatro problemas clásicos ponen a prueba tu pensamiento algorítmico puro — sin escribir ni una línea de código.
+> Los retos de CodeWars y AceptaElReto necesitan tipos, `Scanner` y estructuras de control en Java real, así que cogen ritmo de verdad a partir de la U03. Mientras tanto, estos retos clásicos ponen a prueba tu pensamiento algorítmico puro — sin escribir ni una línea de código.
 
----
+## Reto 1: los tres interruptores
 
-## Desafío 1: el cruce del río (lobo, cabra y col)
-
-Un pastor está en la orilla izquierda de un río junto a un lobo, una cabra y una col. Tiene una barca donde caben él y como mucho uno de los tres.
-
-- Si el lobo se queda solo con la cabra (sin el pastor), se la come.
-- Si la cabra se queda sola con la col (sin el pastor), se la come.
-- El lobo no come col.
-
-**Reto:** escribe en pseudocódigo la secuencia de cruces que lleva a los tres, sanos y salvos, a la orilla derecha.
+Estás en una habitación con tres interruptores. Uno de ellos enciende una bombilla que está en otra habitación, a la que no puedes ver desde donde estás. Puedes mover los interruptores todo lo que quieras, pero solo puedes entrar **una vez** a la habitación de la bombilla para comprobar cuál es. ¿Cómo averiguas qué interruptor es el correcto?
 
 :::tip[Pista]
-Un viaje de vuelta no tiene por qué hacerse con la barca vacía — a veces la única forma de evitar una catástrofe es traerte a alguien de vuelta.
+Una bombilla encendida un rato también se calienta. No tienes que fiarte solo de tus ojos.
 :::
 
 <details>
 <summary>💡 Solución</summary>
 
-```
-1. Cruza con la CABRA (lobo y col quedan seguros juntos en la izquierda).
-2. El pastor vuelve solo.
-3. Cruza con el LOBO.
-4. El pastor vuelve CON LA CABRA (para que el lobo no se quede solo con ella).
-5. Cruza con la COL (la cabra se queda sola en la izquierda, sin nada que comerse).
-6. El pastor vuelve solo.
-7. Cruza con la CABRA otra vez.
-```
-
-Siete viajes, y en ningún momento coinciden lobo+cabra o cabra+col sin el pastor delante.
-
+Enciende el interruptor 1 y espera unos minutos. Apágalo y enciende el interruptor 2. Entra en la habitación: si la bombilla está encendida, es el interruptor 2; si está apagada pero **caliente**, es el interruptor 1; si está apagada y fría, es el interruptor 3.
 </details>
 
----
+## Reto 2: pesar con una balanza de dos platos
 
-## Desafío 2: la conjetura de Collatz
-
-Para cualquier número entero positivo `n`: si es par, `n ← n / 2`; si es impar, `n ← (3 * n) + 1`. Se repite hasta que `n` llegue a 1.
-
-**Reto:** escribe un algoritmo que lea `n`, muestre la secuencia completa de valores por los que pasa, y al final el número total de pasos.
-
-:::tip[Pista]
-Un `MIENTRAS (n <> 1) HACER` con un contador de pasos y un `SI n MOD 2 = 0` dentro es toda la estructura que necesitas.
-:::
+Tienes 9 monedas idénticas a simple vista, pero una de ellas pesa un poco menos que las demás. Tienes una balanza de dos platos (sin números, solo dice qué lado pesa más) y puedes usarla como máximo **2 veces**. ¿Cómo encuentras la moneda falsa?
 
 <details>
 <summary>💡 Solución</summary>
 
-```
-INICIO
-  LEER n
-  pasos ← 0
-  ESCRIBIR n
-  MIENTRAS (n <> 1) HACER
-    SI (n MOD 2 = 0) ENTONCES
-      n ← n DIV 2
-    SINO
-      n ← (3 * n) + 1
-    FINSI
-    ESCRIBIR n
-    pasos ← pasos + 1
-  FINMIENTRAS
-  ESCRIBIR "Tardó " + pasos + " pasos en llegar a 1"
-FIN
-```
+Divide las 9 monedas en tres grupos de 3. Pesa el grupo A contra el B:
+- Si pesan igual, la moneda falsa está en el grupo C.
+- Si no pesan igual, está en el grupo más ligero.
 
+Ya tienes un grupo de 3 sospechosas. Pesa dos de esas tres monedas entre sí: si pesan igual, la falsa es la tercera; si no, es la más ligera de las dos.
 </details>
 
----
+## Reto 3: el algoritmo de la torre de Hanói (razonamiento, no código)
 
-## Desafío 3: el algoritmo de Euclides (máximo común divisor)
+Tienes 3 varillas y varios discos de distinto tamaño apilados en la primera varilla, de mayor a menor. El objetivo es mover toda la torre a la tercera varilla, moviendo un disco cada vez y sin poner nunca un disco más grande encima de uno más pequeño.
 
-Hace más de 2300 años, Euclides encontró una forma de calcular el MCD de dos números mucho más rápida que descomponerlos en factores primos:
-
-- Se calcula el resto de dividir `a` entre `b`.
-- Si el resto es 0, el MCD es `b`.
-- Si no, `a ← b`, `b ← resto`, y se repite.
-
-**Reto:** escribe el algoritmo en pseudocódigo y traza a mano el MCD de `a = 252` y `b = 105`.
-
-:::tip[Pista]
-`MIENTRAS (b <> 0) HACER`, con `resto ← a MOD b`, `a ← b`, `b ← resto` dentro. Cuando el bucle termina, el MCD está en `a`.
-:::
+**Reto:** describe, en pseudocódigo con subalgoritmos, la estrategia general para mover `n` discos de una varilla `origen` a una varilla `destino` usando una varilla `auxiliar` (pista: piensa en el problema como "mover n-1 discos" + "mover 1 disco" + "mover n-1 discos" otra vez).
 
 <details>
 <summary>💡 Solución</summary>
 
 ```
-INICIO
-  LEER a, b
-  MIENTRAS (b <> 0) HACER
-    resto ← a MOD b
-    a ← b
-    b ← resto
-  FINMIENTRAS
-  ESCRIBIR "El MCD es: " + a
-FIN
+SubAlgoritmo Hanoi(n, origen, destino, auxiliar)
+    Si (n == 1) Entonces
+        Escribir "Mueve el disco 1 de ", origen, " a ", destino
+    Sino
+        Hanoi(n - 1, origen, auxiliar, destino)
+        Escribir "Mueve el disco ", n, " de ", origen, " a ", destino
+        Hanoi(n - 1, auxiliar, destino, origen)
+    FinSi
+FinSubAlgoritmo
 ```
 
-Traza para `a = 252`, `b = 105`:
-
-| Vuelta | `a` | `b` | `resto` |
-|:---:|:---:|:---:|:---:|
-| 1 | 252 | 105 | 42 |
-| 2 | 105 | 42 | 21 |
-| 3 | 42 | 21 | 0 |
-
-Cuando `b = 0` el bucle termina y `a = 21` — **MCD(252, 105) = 21**.
-
-</details>
-
----
-
-## Desafío 4: el inversor numérico
-
-Diseña un algoritmo que lea un número entero positivo (por ejemplo, `12345`) y construya el número invertido (`54321`) **usando solo operaciones aritméticas** (`MOD 10` y `DIV 10`) — nada de tratarlo como texto.
-
-:::tip[Pista]
-El último dígito de un número es `numero MOD 10`. Quitárselo es `numero ← numero DIV 10`. Para ir construyendo el invertido: `invertido ← (invertido * 10) + digito`.
-:::
-
-<details>
-<summary>💡 Solución</summary>
-
-```
-INICIO
-  LEER numero
-  invertido ← 0
-  MIENTRAS (numero > 0) HACER
-    digito ← numero MOD 10
-    invertido ← (invertido * 10) + digito
-    numero ← numero DIV 10
-  FINMIENTRAS
-  ESCRIBIR "El número invertido es: " + invertido
-FIN
-```
-
+Es un ejemplo clásico de que algunos problemas se piensan de forma mucho más natural en términos **recursivos**: "mover n discos" se define en función de "mover n-1 discos", hasta llegar al caso base (mover 1 solo disco).
 </details>

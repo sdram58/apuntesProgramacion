@@ -1,220 +1,171 @@
 ---
-title: Boletín U01 — Intermedio (Resuelto)
-description: Los mismos ejercicios que el boletín intermedio, con soluciones
+title: Boletín U01 — Intermedio (resuelto)
+description: Soluciones del boletín intermedio sobre algoritmos y pseudocódigo
 ---
 
-# 📝 Boletín U01 — Intermedio (Resuelto)
+# ✅ Boletín U01 — Intermedio (resuelto)
 
-> Las soluciones están ocultas en cada ejercicio. No hagas trampa: primero inténtalo de verdad.
+1. **Contar pares e impares hasta el 0**
+   <details>
+   <summary>💡 Solución</summary>
 
----
+   ```
+   Algoritmo ContarParesImpares
+       pares = 0
+       impares = 0
+       Leer n
+       Mientras (n <> 0) Hacer
+           Si (n % 2 == 0) Entonces
+               pares = pares + 1
+           Sino
+               impares = impares + 1
+           FinSi
+           Leer n
+       FinMientras
+       Escribir "Pares: ", pares
+       Escribir "Impares: ", impares
+   FinAlgoritmo
+   ```
+   </details>
 
-## Ejercicio 1: el mayor de tres
+2. **Factorial iterativo**
+   <details>
+   <summary>💡 Solución</summary>
 
-<details>
-<summary>🔄 Solución</summary>
+   ```
+   SubAlgoritmo r <- factorial(n)
+       r = 1
+       Para i = 1 Hasta n Hacer
+           r = r * i
+       FinPara
+   FinSubAlgoritmo
+   ```
+   </details>
 
-```
-INICIO
-  LEER n1
-  LEER n2
-  LEER n3
-  mayor ← n1
-  SI n2 > mayor ENTONCES
-    mayor ← n2
-  FINSI
-  SI n3 > mayor ENTONCES
-    mayor ← n3
-  FINSI
-  ESCRIBIR mayor
-FIN
-```
+3. **Traza de "misterio"**
+   <details>
+   <summary>💡 Solución</summary>
 
-La estrategia es "ir guardando el mayor visto hasta ahora" y comparar cada nuevo número contra él: solo dos comparaciones, sin importar el orden de entrada. Comparar los tres a la vez con condiciones anidadas (`SI n1>n2 Y n1>n3...`) se complica mucho más rápido a medida que crece la cantidad de números.
+   | i | r |
+   |---|---|
+   | (inicio) | 1 |
+   | 1 | 1 |
+   | 2 | 2 |
+   | 3 | 6 |
+   | 4 | 24 |
 
-</details>
+   `misterio(n)` calcula el **factorial** de `n` — es exactamente el mismo subalgoritmo del ejercicio 2, solo que con otro nombre.
+   </details>
 
----
+4. **Mayor y menor de 5 números**
+   <details>
+   <summary>💡 Solución</summary>
 
-## Ejercicio 2: traza con acumulador y condición anidada
+   ```
+   Algoritmo MayorMenor
+       Leer n1
+       mayor = n1
+       menor = n1
+       Para i = 2 Hasta 5 Hacer
+           Leer n
+           Si (n > mayor) Entonces
+               mayor = n
+           FinSi
+           Si (n < menor) Entonces
+               menor = n
+           FinSi
+       FinPara
+       Escribir "Mayor: ", mayor
+       Escribir "Menor: ", menor
+   FinAlgoritmo
+   ```
 
-<details>
-<summary>🔄 Solución</summary>
+   La clave: inicializa `mayor` y `menor` con el **primer** valor leído, no con 0 (si todos los números fueran negativos, arrancar en 0 daría un resultado incorrecto).
+   </details>
 
-| Línea | `tope` | `total` | `k` | `k <= tope` | `k MOD 2 = 0` | Salida |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 2 | 4 | — | — | — | — | (lee 4) |
-| 3–4 | 4 | 0 | 1 | — | — | — |
-| 5 | 4 | 0 | 1 | Verdadero | — | entra al bucle |
-| 6 | 4 | 0 | 1 | — | Falso (impar) | va a `SINO` |
-| 9 | 4 | 1 | 1 | — | — | — |
-| 11 | 4 | 1 | 2 | — | — | — |
-| 5 | 4 | 1 | 2 | Verdadero | — | continúa |
-| 6 | 4 | 1 | 2 | — | Verdadero (par) | va a `ENTONCES` |
-| 7 | 4 | 5 | 2 | — | — | — |
-| 11 | 4 | 5 | 3 | — | — | — |
-| 5 | 4 | 5 | 3 | Verdadero | — | continúa |
-| 6 | 4 | 5 | 3 | — | Falso (impar) | va a `SINO` |
-| 9 | 4 | 8 | 3 | — | — | — |
-| 11 | 4 | 8 | 4 | — | — | — |
-| 5 | 4 | 8 | 4 | Verdadero | — | continúa |
-| 6 | 4 | 8 | 4 | — | Verdadero (par) | va a `ENTONCES` |
-| 7 | 4 | 16 | 4 | — | — | — |
-| 11 | 4 | 16 | 5 | — | — | — |
-| 5 | 4 | 16 | 5 | **Falso** | — | sale del bucle |
-| 13 | 4 | 16 | 5 | — | — | `"Total acumulado: 16"` |
+5. **esPrimo**
+   <details>
+   <summary>💡 Solución</summary>
 
-</details>
+   ```
+   SubAlgoritmo esPrimo <- esPrimo(n)
+       primo = Verdadero
+       Si (n < 2) Entonces
+           primo = Falso
+       Sino
+           Para i = 2 Hasta n - 1 Hacer
+               Si (n % i == 0) Entonces
+                   primo = Falso
+               FinSi
+           FinPara
+       FinSi
+   FinSubAlgoritmo
+   ```
 
----
+   No es la versión más eficiente (se podría parar en cuanto se encuentre un divisor, o solo comprobar hasta la raíz cuadrada de `n`), pero es correcta y fácil de entender — en programación, "correcto y claro" siempre va antes que "rápido pero incomprensible".
+   </details>
 
-## Ejercicio 3: caza dos bugs
+6. **IMC modular**
+   <details>
+   <summary>💡 Solución</summary>
 
-<details>
-<summary>🔄 Solución</summary>
+   ```
+   SubAlgoritmo peso <- pedirPeso()
+       Repetir
+           Leer peso
+       Hasta Que (peso > 0)
+   FinSubAlgoritmo
 
-**Bug 1 (bucle infinito):** dentro del `MIENTRAS` nunca se incrementa `contador`. Como siempre vale 0 y `0 <= 5` es eternamente verdadero, el bucle no termina jamás.
+   SubAlgoritmo altura <- pedirAltura()
+       Repetir
+           Leer altura
+       Hasta Que (altura > 0)
+   FinSubAlgoritmo
 
-**Bug 2 (aunque el bucle terminara):** empezando `contador` en 0 y con la condición `contador <= 5`, el bucle iteraría para 0,1,2,3,4,5 — **6 veces**, no 5 — y luego divide entre 5 igualmente: la media sale mal.
+   Algoritmo CalcularIMC
+       p = pedirPeso()
+       a = pedirAltura()
+       imc = p / (a * a)
+       Escribir "IMC: ", imc
+       Si (imc < 18.5) Entonces
+           Escribir "Bajo peso"
+       Sino
+           Si (imc < 25) Entonces
+               Escribir "Normal"
+           Sino
+               Si (imc < 30) Entonces
+                   Escribir "Sobrepeso"
+               Sino
+                   Escribir "Obesidad"
+               FinSi
+           FinSi
+       FinSi
+   FinAlgoritmo
+   ```
 
-```
-INICIO
-  sumaNotas ← 0
-  contador ← 1
-  MIENTRAS contador <= 5 HACER
-    LEER nota
-    sumaNotas ← sumaNotas + nota
-    contador ← contador + 1
-  FINMIENTRAS
-  media ← sumaNotas / 5
-  ESCRIBIR "La nota media es: " + media
-FIN
-```
+   Fíjate en el uso de `Repetir...Hasta Que` para validar la entrada: como queremos pedir el dato **al menos una vez**, encaja mejor que `Mientras`.
+   </details>
 
-Empezar en 1 y comparar con `<= 5` da exactamente 5 iteraciones, coherente con dividir entre 5.
+7. **Compilado vs. interpretado, y Java**
+   <details>
+   <summary>💡 Solución</summary>
 
-</details>
+   Un lenguaje compilado traduce todo el código fuente a código máquina **antes** de ejecutarlo (rápido en ejecución, pero específico de cada plataforma). Uno interpretado lo va traduciendo y ejecutando **línea a línea, en el momento** (más lento, pero portable). Java no es puramente ninguna de las dos cosas: primero se **compila** a bytecode (independiente de la plataforma), y después la JVM **interpreta** ese bytecode (con optimizaciones JIT que compilan en caliente las partes más usadas). Es un modelo híbrido, y es justo lo que le da a Java su portabilidad ("write once, run anywhere").
+   </details>
 
----
+8. **Factorial recursivo**
+   <details>
+   <summary>💡 Solución</summary>
 
-## Ejercicio 4: del diagrama al pseudocódigo
+   ```
+   SubAlgoritmo r <- factorialRecursivo(n)
+       Si (n <= 1) Entonces
+           r = 1
+       Sino
+           r = n * factorialRecursivo(n - 1)
+       FinSi
+   FinSubAlgoritmo
+   ```
 
-<details>
-<summary>🔄 Solución</summary>
-
-```
-INICIO
-  LEER precio
-  LEER esSocio
-  SI esSocio = VERDADERO ENTONCES
-    descuento ← precio * 0.15
-  SINO
-    descuento ← 0
-  FINSI
-  total ← precio - descuento
-  SI total > 100 ENTONCES
-    total ← total - 10
-  FINSI
-  ESCRIBIR "Cobrar: " + total
-FIN
-```
-
-Dos decisiones independientes en secuencia: primero se resuelve el descuento por socio, y con ese resultado ya calculado se evalúa la segunda condición sobre el total.
-
-</details>
-
----
-
-## Ejercicio 5: validar con REPETIR...HASTA QUE
-
-<details>
-<summary>🔄 Solución</summary>
-
-```
-INICIO
-  REPETIR
-    ESCRIBIR "Introduce una calificación (0.0 a 10.0):"
-    LEER nota
-    SI (nota < 0.0) O (nota > 10.0) ENTONCES
-      ESCRIBIR "Error: fuera de rango. Inténtalo de nuevo."
-    FINSI
-  HASTA QUE (nota >= 0.0) Y (nota <= 10.0)
-  ESCRIBIR "Nota válida registrada: " + nota
-FIN
-```
-
-`REPETIR...HASTA QUE` es la elección correcta porque necesitas pedir el dato **al menos una vez** antes de poder comprobar si es válido — con un `MIENTRAS` tendrías que inventarte un valor inicial falso solo para entrar al bucle.
-
-</details>
-
----
-
-## Ejercicio 6: conteo con PARA
-
-<details>
-<summary>🔄 Solución</summary>
-
-```
-INICIO
-  positivos ← 0
-  negativos ← 0
-  ceros ← 0
-  PARA i ← 1 HASTA 8 HACER
-    ESCRIBIR "Número " + i + " de 8:"
-    LEER num
-    SI num > 0 ENTONCES
-      positivos ← positivos + 1
-    SINO
-      SI num < 0 ENTONCES
-        negativos ← negativos + 1
-      SINO
-        ceros ← ceros + 1
-      FINSI
-    FINSI
-  FINPARA
-  ESCRIBIR "Positivos: " + positivos
-  ESCRIBIR "Negativos: " + negativos
-  ESCRIBIR "Ceros: " + ceros
-FIN
-```
-
-</details>
-
----
-
-## Ejercicio 7: factorial con PARA
-
-<details>
-<summary>🔄 Solución</summary>
-
-```
-INICIO
-  LEER N
-  SI N < 0 ENTONCES
-    ESCRIBIR "Error: el factorial no existe para negativos"
-  SINO
-    factorial ← 1
-    PARA i ← 1 HASTA N HACER
-      factorial ← factorial * i
-    FINPARA
-    ESCRIBIR "El factorial de " + N + " es: " + factorial
-  FINSI
-FIN
-```
-
-`factorial` se inicializa en 1 (el elemento neutro del producto), no en 0. Fíjate además en que si `N = 0`, el bucle `PARA i ← 1 HASTA 0` no llega a ejecutarse ni una vez, y el algoritmo devuelve `factorial = 1` — justo el resultado correcto de `0!`, sin necesitar ningún caso especial.
-
-</details>
-
----
-
-## Ejercicio 8: tu proyecto en IntelliJ
-
-<details>
-<summary>🔄 Solución</summary>
-
-1. **`.idea/`** guarda la configuración interna del proyecto para IntelliJ (JDK asignado, estilos de código, configuraciones de ejecución) — no se toca a mano. **`.iml`** es el fichero de metadatos del módulo: qué carpetas son código fuente, qué librerías usa, etc.
-2. **`src/`** es donde vive tu código Java y solo tu código Java — es lo único que editas y lo único que hace falta versionar en Git. **`out/`** (o `target/`) la genera el propio compilador con los `.class` resultantes; nunca se edita a mano ni se sube al repositorio.
-3. Comentar una línea: `Ctrl + /`. Reformatear todo el fichero: `Ctrl + Alt + L`.
-
-</details>
+   Fíjate en el **caso base** (`n <= 1`): sin él, la recursividad no tendría dónde parar y el programa nunca terminaría. Cuál versión es "más fácil de leer" es opinable — muchas personas ven la iterativa más intuitiva al principio, y la recursiva más elegante una vez que le coges el truco. Ambas son igual de válidas.
+   </details>

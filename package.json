@@ -7,9 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "pdf:local:es": "powershell -ExecutionPolicy Bypass -File scripts/generate-pdf.ps1 -Target local",
-    "pdf:es": "powershell -ExecutionPolicy Bypass -File scripts/generate-pdf.ps1 -Target prod",
-    "epub": "powershell -ExecutionPolicy Bypass -File scripts/generate-epub.ps1"
+    "pdf": "node scripts/generate-pdfs.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.0",
@@ -18,15 +16,13 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "starlight-to-pdf": "^1.4.0"
-  },
-  "overrides": {
     "puppeteer": "^25.9.0"
   },
   "allowScripts": {
-    "puppeteer@23.11.1": true,
-    "puppeteer@25.9.0": true,
+    "puppeteer@25.10.0": true,
     "sharp@0.34.5": true,
-    "esbuild@0.27.7": true
+    "sharp@0.33.5": true,
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true
   }
 }
