@@ -56,10 +56,10 @@ template: splash
   <a class="unit-link" href="07-api-stream/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>📁 U08 · Ficheros y streams</strong>
   <span>Entrada/salida y persistencia en disco.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="08-ficheros-streams/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
