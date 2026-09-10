@@ -50,10 +50,10 @@ template: splash
   <a class="unit-link" href="06-genericos-colecciones/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🌊 U07 · La API Stream</strong>
   <span>Programación funcional con colecciones.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="07-api-stream/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
