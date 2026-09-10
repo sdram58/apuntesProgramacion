@@ -169,3 +169,23 @@ description: Soluciones del boletín intermedio sobre algoritmos y pseudocódigo
 
    Fíjate en el **caso base** (`n <= 1`): sin él, la recursividad no tendría dónde parar y el programa nunca terminaría. Cuál versión es "más fácil de leer" es opinable — muchas personas ven la iterativa más intuitiva al principio, y la recursiva más elegante una vez que le coges el truco. Ambas son igual de válidas.
    </details>
+
+9. **Tipos de error**
+   <details>
+   <summary>💡 Solución</summary>
+
+   - **(a) Olvidar un `FinSi`** → error **sintáctico**: el código no respeta la gramática del pseudocódigo/lenguaje, y se detecta al compilar (o, en pseudocódigo, al intentar ejecutarlo en PSeInt), antes de que el algoritmo llegue a hacer nada.
+   - **(b) Fórmula equivocada (área de cuadrado en vez de círculo)** → error **semántico/lógico**: el programa compila y se ejecuta sin quejarse, pero el resultado que calcula es incorrecto porque el algoritmo en sí está mal planteado.
+   - **(c) División por un número de participantes que puede ser 0** → error **de ejecución**: el código es correcto en general, pero falla solo para ciertos datos concretos (cuando participantes vale 0) — no se detecta hasta que el programa se ejecuta con esos datos exactos.
+   </details>
+
+10. **Ventajas del modelo híbrido de Java**
+    <details>
+    <summary>💡 Solución</summary>
+
+    Frente a un lenguaje **puramente compilado** como C: Java no genera un ejecutable atado a una plataforma concreta. El bytecode es el mismo `.class` en Windows, Linux o Mac — solo necesitas la JVM correspondiente instalada, no recompilar el programa para cada sistema.
+
+    Frente a un lenguaje **puramente interpretado** como Python: no hace falta tener el código fuente disponible para ejecutar el programa (basta con el `.class`/`.jar` ya compilado), y el bytecode ya viene parcialmente optimizado desde la compilación, en vez de traducirse línea a línea cada vez que se ejecuta.
+
+    Es la combinación de ambas cosas —portabilidad + rendimiento razonable— lo que hizo de Java una opción tan popular para aplicaciones empresariales que tenían que correr en máquinas muy distintas entre sí.
+    </details>

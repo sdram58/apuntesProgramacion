@@ -28,3 +28,7 @@ Ejercicios de pseudocódigo puro, sin Java todavía. Resuélvelos a mano o con [
 7. Clasifica estos tres lenguajes según si son de alto o bajo nivel, y si se compilan o se interpretan (puedes buscarlo): Ensamblador, Python, Java.
 
 8. Ordena estas cinco fases del ciclo de vida de un programa en el orden correcto: Pruebas, Análisis, Despliegue y mantenimiento, Diseño, Implementación.
+
+9. Calcula a mano el resultado de estas expresiones, aplicando el orden de precedencia de operadores (sin usar calculadora): `3 + 4 * 2`, `(3 + 4) * 2`, `10 mod 3 + 1`, `2 ^ 3 + 1`.
+
+10. Escribe en pseudocódigo un algoritmo que use `Según...Hacer` para, dado un número del 1 al 7, escribir el nombre del día de la semana correspondiente (1 = Lunes, ..., 7 = Domingo), y un mensaje de error para cualquier otro número.

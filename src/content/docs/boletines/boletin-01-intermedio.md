@@ -29,3 +29,7 @@ description: Ejercicios propuestos de nivel intermedio sobre algoritmos y pseudo
 7. Explica con tus propias palabras la diferencia entre un algoritmo **compilado** y uno **interpretado**, y qué papel juega el bytecode de Java en ese esquema — ¿es Java 100% compilado, 100% interpretado, o ninguna de las dos cosas?
 
 8. Un subalgoritmo puede llamarse a sí mismo — eso se llama **recursividad**. Escribe (en pseudocódigo) una versión **recursiva** del `factorial(n)` del ejercicio 2, y compárala con tu versión iterativa: ¿cuál te resulta más fácil de leer?
+
+9. Clasifica cada uno de estos fallos como error **sintáctico**, **semántico/lógico** o **de ejecución**, y justifica por qué: (a) olvidar un `FinSi` de cierre; (b) un algoritmo que calcula el área de un círculo usando la fórmula del área de un cuadrado; (c) un algoritmo que divide un total entre el número de participantes, cuando ese número puede llegar a valer 0.
+
+10. Java es un lenguaje **híbrido** (orientado a objetos, con soporte para el paradigma funcional a través de la API Stream) y usa una **máquina virtual** en vez de compilar directamente a código máquina nativo. Explica, con tus propias palabras, qué ventaja práctica tiene esto frente a un lenguaje puramente compilado como C, y qué ventaja tiene frente a uno puramente interpretado como Python.

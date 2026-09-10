@@ -119,3 +119,35 @@ description: Soluciones del boletín inicial sobre algoritmos y pseudocódigo
 
    Análisis → Diseño → Implementación → Pruebas → Despliegue y mantenimiento.
    </details>
+
+9. **Precedencia de operadores**
+   <details>
+   <summary>💡 Solución</summary>
+
+   - `3 + 4 * 2` = 3 + 8 = **11** (la multiplicación va antes que la suma)
+   - `(3 + 4) * 2` = 7 * 2 = **14** (el paréntesis fuerza a sumar primero)
+   - `10 mod 3 + 1` = 1 + 1 = **2** (`mod` tiene la misma precedencia que `*` y `/`, va antes que `+`)
+   - `2 ^ 3 + 1` = 8 + 1 = **9** (la potencia es lo primero que se calcula, antes incluso que `*` y `/`)
+   </details>
+
+10. **Días de la semana con Según...Hacer**
+    <details>
+    <summary>💡 Solución</summary>
+
+    ```
+    Algoritmo DiaSemana
+        Definir dia Como Entero;
+        Leer dia;
+        Según dia Hacer
+            1: Escribir "Lunes";
+            2: Escribir "Martes";
+            3: Escribir "Miércoles";
+            4: Escribir "Jueves";
+            5: Escribir "Viernes";
+            6: Escribir "Sábado";
+            7: Escribir "Domingo";
+            De Otro Modo: Escribir "Número inválido";
+        FinSegun
+    FinAlgoritmo
+    ```
+    </details>
