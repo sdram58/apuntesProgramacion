@@ -38,10 +38,10 @@ template: splash
   <a class="unit-link" href="04-clases-objetos/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🧬 U05 · POO avanzada</strong>
   <span>Herencia, polimorfismo e interfaces.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="05-poo-avanzada/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
