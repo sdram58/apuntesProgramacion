@@ -32,10 +32,10 @@ template: splash
   <a class="unit-link" href="03-excepciones-bucles-arrays-metodos/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🧩 U04 · Clases y objetos</strong>
   <span>Los fundamentos de la orientación a objetos.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="04-clases-objetos/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
