@@ -44,10 +44,10 @@ template: splash
   <a class="unit-link" href="05-poo-avanzada/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>📚 U06 · Genéricos y colecciones</strong>
   <span>Estructuras de datos avanzadas de Java.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="06-genericos-colecciones/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
