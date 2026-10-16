@@ -20,3 +20,5 @@ description: Ejercicios propuestos de nivel inicial sobre interfaces gráficas y
 7. Explica con tus propias palabras qué es el *hilo de despacho de eventos* y por qué se arranca la interfaz con `invokeLater` en vez de directamente desde `main`.
 
 8. Explica la diferencia entre la *fuente* de un evento y su *listener*, usando como ejemplo un botón y un `ActionListener`.
+
+9. Crea un formulario de pedido de pizza: dos `JRadioButton` en un `ButtonGroup` (tamaño pequeña/grande), una `JCheckBox` "Extra de queso", un `JComboBox` con tres masas distintas y un botón "Pedir" que muestre con un `JOptionPane` un resumen de lo elegido.

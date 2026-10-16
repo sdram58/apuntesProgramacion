@@ -131,3 +131,32 @@ description: Soluciones del boletín inicial sobre interfaces gráficas y evento
 
    La **fuente** es el componente donde se origina el evento — el `JButton` que el usuario pulsa. El **listener** es un objeto distinto, que ha pedido ser avisado de esos eventos (`boton.addActionListener(listener)`) y que contiene el código que se ejecuta cuando ocurren (`actionPerformed`). Esa separación hace que el botón no necesite saber qué se hace al pulsarlo, y que un mismo listener pueda reutilizarse con varios botones, ya que el evento que recibe indica quién lo originó (`e.getSource()`).
    </details>
+
+9. **Pedido de pizza**
+   <details>
+   <summary>💡 Solución</summary>
+
+   ```java
+   JRadioButton pequena = new JRadioButton("Pequeña", true);
+   JRadioButton grande = new JRadioButton("Grande");
+   ButtonGroup tamanos = new ButtonGroup();
+   tamanos.add(pequena);
+   tamanos.add(grande);
+
+   JCheckBox queso = new JCheckBox("Extra de queso");
+   JComboBox<String> masa = new JComboBox<>(new String[]{"Fina", "Normal", "Rellena"});
+   JButton pedir = new JButton("Pedir");
+
+   pedir.addActionListener(e -> {
+       String resumen = "Tamaño: " + (pequena.isSelected() ? "pequeña" : "grande")
+               + "\nMasa: " + masa.getSelectedItem()
+               + "\nExtra de queso: " + (queso.isSelected() ? "sí" : "no");
+       JOptionPane.showMessageDialog(this, resumen, "Resumen del pedido", JOptionPane.INFORMATION_MESSAGE);
+   });
+
+   setLayout(new FlowLayout());
+   add(pequena); add(grande); add(queso); add(masa); add(pedir);
+   ```
+
+   El `ButtonGroup` no se añade a la ventana: es un objeto invisible que solo se encarga de que marcar un radio desmarque el otro.
+   </details>

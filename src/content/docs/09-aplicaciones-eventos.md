@@ -108,6 +108,10 @@ Java separa **quién genera** el evento de **quién lo atiende**:
 
 Los pasos de siempre: importar `java.awt.event.*`, crear un objeto que implemente la interface *listener* adecuada, implementar sus métodos, y registrarlo en el componente.
 
+:::note[Esto es el patrón Observer]
+Un componente (el *sujeto*) mantiene una lista de objetos interesados (los *observadores*, tus listeners) y los avisa a todos cuando algo cambia — igual que una app del tiempo que avisa a todos los dispositivos registrados cuando llega una nueva previsión. `addActionListener` es exactamente "apúntame a la lista de avisos". Saber que es un patrón de diseño conocido te ayuda a reconocerlo en otras librerías, y a escribir el tuyo propio: una interface con un método `actualizar(...)`, una lista de observadores y un método `notificar()` que recorre la lista.
+:::
+
 ### El caso más habitual: pulsar un botón
 
 Un clic en un botón genera un `ActionEvent`, que escucha un `ActionListener` — una interface **con un único método** (`actionPerformed`), así que puedes implementarla con una **lambda** (¡lo que aprendiste en la unidad 5 tiene uso real aquí!):
@@ -175,15 +179,127 @@ Todo el código de tus listeners se ejecuta en el hilo de despacho de eventos �
 | `JSlider` / `JSpinner` | Elegir un valor en un rango | `getValue` |
 | `JTable` | Datos en filas y columnas | a través de un modelo |
 
-Y para los **cuadros de diálogo** ya hechos, `JOptionPane` ofrece cuatro variantes muy útiles:
+### Casillas y opciones excluyentes
+
+`JCheckBox` y `JRadioButton` se leen con `isSelected()` y, si quieres reaccionar al instante cuando cambian, emiten un `ItemEvent` que atiende un `ItemListener`. Para que **solo una** opción de varias pueda estar marcada, los `JRadioButton` se añaden a un `ButtonGroup` (un objeto invisible: no se añade a la ventana, solo agrupa los botones):
 
 ```java
-JOptionPane.showMessageDialog(this, "Operación completada");               // solo informar
-int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro?");            // Sí / No / Cancelar
-String texto = JOptionPane.showInputDialog(this, "Tu nombre:");              // pedir un texto
+JRadioButton pequena = new JRadioButton("Pequeña", true);
+JRadioButton grande = new JRadioButton("Grande");
+
+ButtonGroup tamanos = new ButtonGroup();
+tamanos.add(pequena);
+tamanos.add(grande);                       // ahora marcar una desmarca la otra
+
+JCheckBox extraQueso = new JCheckBox("Extra de queso");
+extraQueso.addItemListener(e -> {
+    boolean marcada = e.getStateChange() == ItemEvent.SELECTED;
+    System.out.println("Extra de queso: " + marcada);
+});
 ```
 
-También existen los menús (`JMenuBar` → `JMenu` → `JMenuItem`), las barras de herramientas (`JToolBar`) y el selector de ficheros (`JFileChooser`, que conecta con lo que viste en la unidad 8).
+### Listas y desplegables
+
+```java
+String[] opciones = {"Muy bueno", "Bueno", "Malo"};
+
+JComboBox<String> combo = new JComboBox<>(opciones);
+combo.addItem("Muy malo");                         // se pueden añadir elementos después
+String elegida = (String) combo.getSelectedItem();
+
+JList<String> lista = new JList<>(opciones);
+lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+add(new JScrollPane(lista));                        // una JList no tiene barra de desplazamiento propia
+String seleccionado = lista.getSelectedValue();     // null si no hay ninguno
+```
+
+Tanto `JList` como `JComboBox` guardan sus datos en un **modelo** (`ListModel`, `ComboBoxModel`) separado del componente visual — la misma idea de separación que verás con MVC en el apartado siguiente.
+
+### Tablas y pestañas
+
+`JTable` muestra datos en filas y columnas. La forma más cómoda de darle datos es un `DefaultTableModel`, y como una `JList`, necesita un `JScrollPane` para mostrar sus cabeceras y barra de desplazamiento:
+
+```java
+DefaultTableModel modelo = new DefaultTableModel();
+modelo.addColumn("ID");
+modelo.addColumn("Nombre");
+modelo.addColumn("Salario");
+modelo.addRow(new Object[]{1, "Antonio García", 1500});
+modelo.addRow(new Object[]{2, "Ana Sánchez", 2200});
+
+JTable tabla = new JTable(modelo);
+add(new JScrollPane(tabla));
+
+Object nombre = modelo.getValueAt(0, 1);   // valor de la celda fila 0, columna 1
+```
+
+Y `JTabbedPane` organiza una ventana en **pestañas**, cada una con su propio panel:
+
+```java
+JTabbedPane pestanas = new JTabbedPane();
+pestanas.addTab("Datos", panelDatos);
+pestanas.addTab("Ajustes", panelAjustes);
+add(pestanas);
+```
+
+### Seleccionar ficheros: `JFileChooser`
+
+Conecta esta unidad con la anterior: un selector estándar para que el usuario elija un fichero, que luego lees o escribes con lo que ya sabes de `java.io`/NIO2.
+
+```java
+JFileChooser selector = new JFileChooser();
+int resultado = selector.showOpenDialog(this);     // showSaveDialog para guardar
+
+if (resultado == JFileChooser.APPROVE_OPTION) {     // el usuario pulsó "Abrir"/"Aceptar"
+    File fichero = selector.getSelectedFile();
+    try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
+        areaTexto.setText("");
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            areaTexto.append(linea + "\n");
+        }
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "No se pudo leer el fichero");
+    }
+}
+// JFileChooser.CANCEL_OPTION → pulsó Cancelar · JFileChooser.ERROR_OPTION → hubo un error
+```
+
+### Cuadros de diálogo con `JOptionPane`
+
+Además de informar, un `JOptionPane` sirve para **preguntar**, y lo que devuelve depende del tipo de diálogo:
+
+```java
+// 1. Informar
+JOptionPane.showMessageDialog(this, "Operación completada");
+
+// 2. Confirmar: devuelve JOptionPane.YES_OPTION (0), NO_OPTION (1), CANCEL_OPTION (2)
+//    o CLOSED_OPTION (-1) si se cierra con la X
+int respuesta = JOptionPane.showConfirmDialog(
+        this, "¿Te gusta programar?", "Curso de Programación", JOptionPane.YES_NO_CANCEL_OPTION);
+if (respuesta == JOptionPane.YES_OPTION) { /* ... */ }
+
+// 3. Pedir un texto: devuelve el String escrito, o null si el usuario cancela
+String texto = JOptionPane.showInputDialog(this, "Tu nombre:");
+
+// 4. Elegir entre opciones de un desplegable
+String[] valoraciones = {"Muy bueno", "Bueno", "Malo", "Muy malo"};
+String elegida = (String) JOptionPane.showInputDialog(
+        this, "Valora el curso", "Curso de Programación",
+        JOptionPane.QUESTION_MESSAGE, null, valoraciones, valoraciones[0]);
+
+// 5. Botones totalmente personalizados: devuelve el índice del botón pulsado
+int indice = JOptionPane.showOptionDialog(
+        this, "Valora el curso", "Curso de Programación",
+        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+        null, valoraciones, valoraciones[0]);
+```
+
+:::caution[Comprueba siempre el `null`]
+Si el usuario cierra o cancela un `showInputDialog`, el método devuelve `null`, no una cadena vacía. Llamar a `.trim()` o `.length()` sobre ese `null` lanza un `NullPointerException`: comprueba `if (texto != null)` antes de usarlo.
+:::
+
+También existen los menús (`JMenuBar` → `JMenu` → `JMenuItem`, que se atienden con `ActionListener` igual que un botón) y las barras de herramientas (`JToolBar`).
 
 ## 6. El patrón MVC: separar la lógica de la pantalla
 
