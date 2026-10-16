@@ -68,10 +68,10 @@ template: splash
   <a class="unit-link" href="09-aplicaciones-eventos/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🗄️ U10 · Bases de datos relacionales</strong>
   <span>JDBC y acceso a datos relacionales desde Java.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="10-bd-relacionales/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
