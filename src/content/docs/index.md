@@ -62,10 +62,10 @@ template: splash
   <a class="unit-link" href="08-ficheros-streams/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🖱️ U09 · Aplicaciones controladas por eventos</strong>
   <span>Interfaces gráficas con Swing/AWT.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <a class="unit-link" href="09-aplicaciones-eventos/">Ver unidad</a>
 </div>
 
 <div class="unit-card disabled">
