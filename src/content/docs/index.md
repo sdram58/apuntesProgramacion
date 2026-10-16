@@ -74,10 +74,10 @@ template: splash
   <a class="unit-link" href="10-bd-relacionales/">Ver unidad</a>
 </div>
 
-<div class="unit-card disabled">
+<div class="unit-card">
   <strong>🗃️ U11 · Bases de datos orientadas a objetos</strong>
-  <span>Persistencia de objetos.</span>
-  <span style="font-size:0.8rem;opacity:0.7;">Próximamente</span>
+  <span>Persistencia de objetos, NoSQL y MongoDB.</span>
+  <a class="unit-link" href="11-bd-orientadas-objetos/">Ver unidad</a>
 </div>
 
 </div>
